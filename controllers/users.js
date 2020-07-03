@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 
 //@route  Post api/users
-//@desc   Test route
+//@desc   Register user
 //@access Public
 exports.signup = async (req, res, next) => {
   const errors = validationResult(req);
