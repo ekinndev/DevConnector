@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://ekin123:ekin123@devconnector.pltf3.mongodb.net/devconnector?retryWrites=true&w=majority",
-  "jwtSecret": "secretsecretkeykey"
+  "jwtSecret": "secretsecretkeykey",
+  "githubClientId":"908d0e51ef6909b644c2",
+  "githubSecret":"65f66444218d1da0448172538aaaaa40dbcb56ba"
 }
