@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node server",
     "server": "nodemon server",
-    "client":"npm start --prefix client",
-    "dev":"concurrently \"npm run server\" \"npm run client\""
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Ekin Abalıoğlu",
   "license": "MIT",
@@ -20,7 +20,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.21",
     "request": "^2.88.2",
-    "request-promise": "^4.2.5"
+    "request-promise": "^4.2.5",
+    "uuid": "^8.2.0"
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
