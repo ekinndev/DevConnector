@@ -3,6 +3,7 @@ const User = require('../models/User');
 const { validationResult } = require('express-validator');
 const config = require('config');
 const request = require('request-promise');
+const Post = require('../models/Post');
 
 //@route  GET api/profile/me
 //@desc   Get current user profile
@@ -120,7 +121,7 @@ exports.getProfileById = async (req, res) => {
 //@access Private
 exports.deleteUser = async (req, res) => {
   try {
-    //@todo -remove users posts
+    await Post.deleteMany({ user: req.user.id });
     await Profile.findOneAndRemove({ user: req.user.id });
     await User.findOneAndRemove({ _id: req.user.id });
 

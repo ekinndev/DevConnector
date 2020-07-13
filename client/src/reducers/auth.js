@@ -3,6 +3,7 @@ import {
   REGISTER_FAIL,
   USER_LOADED,
   AUTH_ERROR,
+  ACCOUNT_DELETED,
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
@@ -28,6 +29,7 @@ export default function (state = initialState, action) {
     case AUTH_ERROR:
     case LOGIN_FAIL:
     case LOGOUT:
+    case ACCOUNT_DELETED:
       localStorage.removeItem('token');
       return { ...state, token: null, isAuthenticated: false, loading: false };
     default:

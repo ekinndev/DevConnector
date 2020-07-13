@@ -1,8 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {  getCurrentProfile } from '../../actions/profile';
+import { getCurrentProfile } from '../../actions/profile';
+import { createProfile } from '../../actions/profile';
 
 const initialState = {
   company: '',
@@ -65,12 +66,15 @@ const ProfileForm = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log(formData.status);
     createProfile(formData, history, profile ? true : false);
   };
 
   return (
     <Fragment>
-      <h1 className='large text-primary'>Edit Your Profile</h1>
+      <h1 className='large text-primary'>
+        {profile ? 'Edit Your Profile' : 'Create Your Profile'}
+      </h1>
       <p className='lead'>
         <i className='fas fa-user' /> Add some changes to your profile
       </p>
@@ -78,7 +82,7 @@ const ProfileForm = ({
       <form className='form' onSubmit={onSubmit}>
         <div className='form-group'>
           <select name='status' value={status} onChange={onChange}>
-            <option>* Select Professional Status</option>
+            <option value=''>* Select Professional Status</option>
             <option value='Developer'>Developer</option>
             <option value='Junior Developer'>Junior Developer</option>
             <option value='Senior Developer'>Senior Developer</option>
@@ -243,7 +247,7 @@ const ProfileForm = ({
 };
 
 ProfileForm.propTypes = {
-  // createProfile: PropTypes.func.isRequired,
+  createProfile: PropTypes.func.isRequired,
   getCurrentProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
 };
@@ -252,6 +256,6 @@ const mapStateToProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, {  getCurrentProfile })(
-  ProfileForm
+export default connect(mapStateToProps, { getCurrentProfile, createProfile })(
+  withRouter(ProfileForm)
 );
