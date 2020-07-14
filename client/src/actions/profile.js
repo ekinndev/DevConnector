@@ -8,9 +8,11 @@ import {
   ACCOUNT_DELETED,
   GET_PROFILES,
   GET_REPOS,
+  LOADING_START,
 } from './types';
 
 export const getCurrentProfile = () => async (dispatch) => {
+  dispatch({ type: LOADING_START });
   try {
     const res = await axios.get('/api/profile/me');
     dispatch({ type: GET_PROFILE, payload: res.data });
@@ -22,6 +24,8 @@ export const getCurrentProfile = () => async (dispatch) => {
   }
 };
 export const getProfiles = () => async (dispatch) => {
+  dispatch({ type: LOADING_START });
+
   dispatch({ type: CLEAR_PROFILE });
   try {
     const res = await axios.get('/api/profile');
@@ -34,6 +38,8 @@ export const getProfiles = () => async (dispatch) => {
   }
 };
 export const getProfileById = (userId) => async (dispatch) => {
+  dispatch({ type: LOADING_START });
+
   dispatch({ type: CLEAR_PROFILE });
   try {
     const res = await axios.get(`/api/profile/user/${userId}`);
@@ -46,7 +52,7 @@ export const getProfileById = (userId) => async (dispatch) => {
   }
 };
 export const getGithubRepos = (username) => async (dispatch) => {
-  try {
+    try {
     const res = await axios.get(`/api/profile/github/${username}`);
     dispatch({ type: GET_REPOS, payload: res.data });
   } catch (err) {

@@ -5,6 +5,7 @@ import {
   UPDATE_PROFILE,
   GET_PROFILES,
   GET_REPOS,
+  LOADING_START
 } from '../actions/types';
 const initialState = {
   profile: null,
@@ -22,7 +23,9 @@ export default function (state = initialState, action) {
     case GET_PROFILES:
       return { ...state, profiles: payload, loading: false };
     case PROFILE_ERROR:
-      return { ...state, error: payload, loading: false,profile:null };
+      return { ...state, error: payload, loading: false, profile: null };
+    case LOADING_START:
+      return { ...state, loading: true };
     case CLEAR_PROFILE:
       return {
         ...state,
