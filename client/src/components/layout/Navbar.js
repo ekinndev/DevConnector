@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+  let history = useHistory();
   const authLinks = (
     <ul>
       <li>
@@ -14,12 +15,17 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </li>
       <li>
         <Link to='/dashboard'>
-          <i className='fas fa-user'></i>{' '}
-          <span className='hide-sm'>Dashboard</span>
+          <i className='fas fa-user'></i> <span className='hide-sm'>Dashboard</span>
         </Link>
       </li>
       <li>
-        <a onClick={logout} href='#!'>
+        <a
+          onClick={() => {
+            logout();
+            history.push('/login');
+          }}
+          href='#!'
+        >
           <i className='fas fa-sign-out-alt'></i>
           <span className='hide-sm'>Logout</span>
         </a>
@@ -52,9 +58,9 @@ export const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 };
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
-const mapStateToProps = (state) => ({
-  auth: state.auth,
+const mapStateToProps = state => ({
+  auth: state.auth
 });
 export default connect(mapStateToProps, { logout })(Navbar);
