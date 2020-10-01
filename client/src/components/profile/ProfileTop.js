@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 const ProfileTop = ({
   profile: {
@@ -23,29 +22,29 @@ const ProfileTop = ({
       <p>{location && <span>{location}</span>}</p>
       <div className='icons my-1'>
         {website && (
-          <Link to={website}>
+          <a href={website}>
             <i className='fas fa-globe fa-2x'></i>
-          </Link>
+          </a>
         )}
         {social && social.twitter && (
-          <Link to={social.twitter}>
+          <a href={social.twitter}>
             <i className='fab fa-twitter fa-2x'></i>
-          </Link>
+          </a>
         )}
         {social && social.facebook && (
-          <Link to={social.facebook}>
+          <a href={social.facebook}>
             <i className='fab fa-facebook fa-2x'></i>
-          </Link>
+          </a>
         )}
         {social && social.linkedin && (
-          <Link to={social.linkedin}>
+          <a href={social.linkedin}>
             <i className='fab fa-linkedin fa-2x'></i>
-          </Link>
+          </a>
         )}
         {social && social.instagram && (
-          <Link to={social.instagram}>
+          <a href={social.instagram}>
             <i className='fab fa-instagram fa-2x'></i>
-          </Link>
+          </a>
         )}
       </div>
     </div>
