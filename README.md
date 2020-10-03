@@ -6,3 +6,5 @@
  - npm run dev 
  - Open http://localhost:3000 in your browser for client
  - Backend is working on 5000 port
+ 
+LICENSE:MIT
