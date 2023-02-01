@@ -19,7 +19,7 @@
     "express-validator": "^6.6.0",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.21",
+    "mongoose": "^5.13.15",
     "request": "^2.88.2",
     "request-promise": "^4.2.5",
     "uuid": "^8.2.0"
